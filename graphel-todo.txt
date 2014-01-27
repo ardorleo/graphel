@@ -1,2 +1,5 @@
 - add visual feedback on shape over
-- show shape when dragged from stencil to canvas or at least when mouse over canvas
+- show shape when dragged from stencil to canvas or at least when mouse is over canvas
+- zoom is resetted when undo/redo
+- grid dimensions are not correct not fitting to shape size when for example zoom in is done
+- getCanvas() method needs to be reworked to enable multiple canvases 
