@@ -1,0 +1,17 @@
+div.GraphelUI {
+	background-color:white;
+	border:0px solid #000000;
+	border-radius: 10px; 
+}
+.GraphelUICanvas {
+	background-color:#FFFFFF;
+}
+.GraphelUICanvasResizer {
+	background-color:red;
+}
+.GraphelUIPathModifier {
+	background-image:url(img/icon-path-modifier.svg);
+}
+.GraphelUIRectangle {
+	background-color:red;
+}
