@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Graphel</title>
+<link rel="stylesheet" type="text/css" href="graphel.css" />
+<script type="text/javascript" src="graphel.js" />
+<script type="text/javascript" src="graphel_ajax.js" />
+<script type="text/javascript" src="graphel_utils.js" />
+<script type="text/javascript" src="graphel_shape_decorations.js" />
+
+<script type="text/javascript" language="JavaScript">
+
+window.onload = function () { 
+	var s = 0;
+	var Graphel = new GraphelUI('GraphelCanvasViewbox', 0, 0, 500, 500, document.getElementById('p'));
+	Graphel.LocalImgPath	= 'img/';
+	//add a canvas
+	Graphel.addCanvas(null, 65, 60, 850, 400);
+	//add tools for canvas and diagram editor
+	Graphel.addCanvasMover(10, 10);
+	Graphel.addCanvasZoomer(20, 60);
+	Graphel.addCanvasCenter(20, 130);
+	Graphel.addShapePicker( 65, 15, null, 'rectangle');
+	Graphel.addShapePicker(100, 15, null, 'rounded-rectangle');
+	Graphel.addShapePicker(135, 15, null, 'circle');
+	Graphel.addShapePicker(170, 15, null, 'diamond');
+	Graphel.addShapePicker(205, 15, null, 'path');
+	
+	Graphel.addActionTool(245, 15, 'undo');
+	Graphel.addActionTool(280, 15, 'redo');
+	Graphel.addActionTool(315, 15, 'clear-canvas');
+
+	var shapes  = '';
+	shapes += 'bpmn20-activity,';
+	shapes += 'bpmn20-event-plain-start,bpmn20-event-plain-intermediate,bpmn20-event-plain-end,bpmn20-event-terminate-end,';
+	shapes += 'bpmn20-event-link-intermediate-catch,bpmn20-event-link-intermediate-throw,';
+	shapes += 'bpmn20-event-timer-intermediate,';
+	shapes += 'bpmn20-gateway-parallel,bpmn20-gateway-exclusive,bpmn20-gateway-inclusive,';
+	shapes += 'bpmn20-sequenceflow,bpmn20-messageflow,bpmn20-dataflow,';
+	shapes += 'bpmn20-dataobject,bpmn20-messageobject,';
+	shapes += 'bpmn20-party';
+	Graphel.addShapeContainer(355, 15, shapes);
+
+	var shapes  = '';
+	shapes += 'epc10-activity,';
+	shapes += 'epc10-event,';
+	shapes += 'epc10-sequenceflow,epc10-dataflow,epc10-carriesout,';
+	shapes += 'epc10-connector-and,epc10-connector-or,epc10-connector-xor,';
+	shapes += 'epc10-orgunit2,epc10-role,';
+	shapes += 'epc10-entitytype,epc10-machine,epc10-itsystem';
+	Graphel.addShapeContainer(455, 15, shapes);
+
+	Graphel.addActionTool(555, 15, 'auto-color');
+	
+	//adjusting  viewbox (visible part of the canvas)
+	var viewbox_b = 0;
+	var viewbox_t = Graphel.Top;
+	var viewbox_l = Graphel.Left;
+	Graphel.Width = document.getElementById('p').clientWidth  - 2*viewbox_l - 2*viewbox_b;
+	Graphel.Height = document.getElementById('p').clientHeight  - 2*viewbox_l - 2*viewbox_b;
+	Graphel.render();
+}
+window.onresize = function () { 
+	//resize graphel
+	var viewbox_b = 0;
+	var viewbox_t = getGraphel().Top;
+	var viewbox_l = getGraphel().Left;
+	getGraphel().Width = document.getElementById('p').clientWidth  - 2*viewbox_l - 2*viewbox_b;
+	getGraphel().Height = document.getElementById('p').clientHeight  - 2*viewbox_l - 2*viewbox_b;
+	getGraphel().render();
+}
+</script>
+</head>
+<body>
+<div id="p" style="position:absolute; top:0px; left: 0px; border:0px solid #000000; height: 100%; width: 100%; background-color:lightgreen;"></div>
+</body>
+</html>
