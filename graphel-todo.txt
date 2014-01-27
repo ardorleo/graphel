@@ -1,0 +1,2 @@
+- add visual feedback on shape over
+- show shape when dragged from stencil to canvas or at least when mouse over canvas
